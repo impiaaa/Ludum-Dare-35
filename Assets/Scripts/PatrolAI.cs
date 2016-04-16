@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof (Mover))]
-public class PatrolAI : MonoBehaviour {
+public class PatrolAI : AI {
     public float waitTime = 3.0f;
     public float walkTime = 3.0f;
 
-    private Mover character;
     private enum PatrolAction { WALK, WAIT };
     private PatrolAction action;
     private float timeSinceLastAction;
     private enum Facing { RIGHT, LEFT };
     private Facing facing = Facing.RIGHT;
 
-    private void Awake()
+    void Start()
     {
-        character = GetComponent<Mover>();
         timeSinceLastAction = Time.time;
     }
 
